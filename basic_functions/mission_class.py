@@ -117,6 +117,14 @@ class Mission:
             if not mapFound:
                 criticalError(MAP_NOT_FOUND.format(mapName))
 
+# ---------------------------------------------
+    def setWindLayer(self, new_wind_layer_dictionary: dict):
+        for i, altitude in enumerate([0, 500, 1000, 2000, 5000]):
+            direction = new_wind_layer_dictionary[altitude]['direction']
+            speed = new_wind_layer_dictionary[altitude]['speed']
+            new_value = '    {0} :     {1} :     {2};\n'.format(altitude, direction, speed)
+            self.ObjList[0].PropList['WindLayers'][i].Value = new_value
+
 #---------------------------------------------
 #TODO : delete object
 #---------------------------------------------
